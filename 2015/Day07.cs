@@ -48,7 +48,7 @@ namespace Advent_of_Code._2015
                     }
                     else if (tokens.Length == 3)
                     {
-                        if (!int.TryParse(tokens[0], out Input2Value))
+                        if (!int.TryParse(tokens[2], out Input2Value))
                             Input2 = tokens[2];
     
                         switch (tokens[1])
@@ -74,11 +74,17 @@ namespace Advent_of_Code._2015
             {
                 get
                 {
-                    if (Input1 != null && !Values.ContainsKey(Input1))
-                        return false;
+                    if (Input1Value == int.MinValue)
+                    {
+                        if (Input1 == null || (Input1 != null && !Values.ContainsKey(Input1)))
+                            return false;
+                    }
 
-                    if(Input2 != null && !Values.ContainsKey(Input2))
-                        return false;
+                    if (Input2Value == int.MinValue)
+                    {
+                        if(Input2 == null || (Input2 != null && !Values.ContainsKey(Input2)))
+                            return false;
+                    }
 
                     return true;
                 }
@@ -109,6 +115,8 @@ namespace Advent_of_Code._2015
                         Values[Output] = (val1 >> val2) & 0xFFFF;
                         break;
                 }
+
+                Console.WriteLine($"Handled gate: {Operation} {Input1}:{val1} {Input2}:{val2} -> {Output} = {Values[Output]}");
                 handled = true;
             }
         }
@@ -132,8 +140,8 @@ namespace Advent_of_Code._2015
                 Gates.Add(new Gate(line));
             }
 
-            while (!Values.ContainsKey("a"))
-            {
+            //while (!Values.ContainsKey("a"))
+            //{
                 foreach (Gate gate in Gates)
                 {
                     if (!gate.handled && gate.CanHandle)
@@ -141,9 +149,10 @@ namespace Advent_of_Code._2015
                         gate.Handle();
                     }
                 }
-            }
+            //}
 
-            Part1.Output = $"Floor = {Values["a"]}";
+            Part1.Output = $"Azahl = {Values.Count}";
+            //Part1.Output = $"Floor = {Values["a"]}";
         }
 
         public override void DoPart2()
