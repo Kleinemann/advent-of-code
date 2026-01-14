@@ -1,5 +1,4 @@
 ﻿using Advent_of_Code.Elemente;
-using System.Windows.Shapes;
 
 namespace Advent_of_Code._2015
 {

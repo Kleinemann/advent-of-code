@@ -1,6 +1,5 @@
 ﻿using Advent_of_Code.Elemente;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Advent_of_Code._2015

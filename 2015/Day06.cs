@@ -1,7 +1,5 @@
 ﻿using Advent_of_Code.Elemente;
 using System.Numerics;
-using System.Security.Cryptography.X509Certificates;
-using System.Windows.Shapes;
 
 namespace Advent_of_Code._2015
 {
